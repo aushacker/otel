@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs
+spec:
+  selector:
+    matchLabels:
+      app: nodejs
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+        - name: nodejs
+          image: nodejs
+          env:
+            - name: OTLP_URL
+              value: 'http://jaeger.aaa-jaeger.svc.cluster.local'
+          ports:
+            - containerPort: 8080
