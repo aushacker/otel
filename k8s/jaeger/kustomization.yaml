@@ -8,6 +8,7 @@ resources:
   - service.yaml
   - route.yaml
 
-containers:
-  - name: jaeger-all-in-one
-    image: jaegertracing/all-in-one:1.35
+images:
+  - name: jaeger
+    newName: jaegertracing/all-in-one
+    newTag: '1.35'

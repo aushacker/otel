@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: jaeger
-          image: jaeger-all-in-one
+          image: jaeger
           env:
             - name: COLLECTOR_OTLP_ENABLED
               value: 'true'

@@ -6,9 +6,12 @@ spec:
   selector:
     app: jaeger
   ports:
-    - port: 80
+    - name: http
+      port: 80
       targetPort: 16686
-    - port: 4317
+    - name: otlp-grpc
+      port: 4317
       targetPort: 4317
-    - port: 4318
+    - name: otlp-http
+      port: 4318
       targetPort: 4318
