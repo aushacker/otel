@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jaeger
+spec:
+  selector:
+    matchLabels:
+      app: jaeger
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: jaeger
+    spec:
+      containers:
+        - name: jaeger
+          image: jaeger-all-in-one
+          env:
+            - name: COLLECTOR_OTLP_ENABLED
+              value: 'true'
+          ports:
+            - containerPort: 16686
+            - containerPort: 4317
+            - containerPort: 4318

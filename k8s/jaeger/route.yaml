@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: jaeger-ui
+spec:
+  host: jaeger-ui-aaa.apps.lab.ocp.lan
+  to:
+    kind: Service
+    name: jaeger
+    weight: 100
+  port:
+    targetPort: 16686
+  wildcardPolicy: None
