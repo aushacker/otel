@@ -6,7 +6,10 @@ RUN npm install express \
                 @opentelemetry/auto-instrumentations-node \
                 @opentelemetry/instrumentation-http \
                 @opentelemetry/instrumentation-express \
-                @opentelemetry/exporter-trace-otlp-http
+                @opentelemetry/exporter-trace-otlp-http && \
+    mkdir ${HOME}/.npm && \
+    chown 1001:0 ${home}/.npm && \
+    chmod g+w ${HOME}/.npm
 
 COPY ./*.js ./package.json ${HOME}/ 
 
