@@ -11,4 +11,4 @@ resources:
 images:
   - name: jaeger
     newName: jaegertracing/all-in-one
-    newTag: '1.35'
+    newTag: '1'
