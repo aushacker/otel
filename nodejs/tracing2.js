@@ -11,7 +11,7 @@ const exporterUrl = process.env.OTLP_URL || "http://localhost:4318/v1/traces";
 const sdk = new opentelemetry.NodeSDK({
   traceExporter: new OTLPTraceExporter({
     // optional - url default value is http://localhost:4318/v1/traces
-    url: exportrUrl,
+    url: exporterUrl,
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
