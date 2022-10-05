@@ -5,6 +5,8 @@ const {
 const {
   OTLPTraceExporter,
 } = require("@opentelemetry/exporter-trace-otlp-http");
+const { HttpInstrumentation } = require('@opentelemetry/instrumentation-http');
+const { ExpressInstrumentation } = require('@opentelemetry/instrumentation-express');
 
 const exporterUrl = process.env.OTLP_URL || "http://localhost:4318/v1/traces";
 
@@ -15,6 +17,9 @@ const sdk = new opentelemetry.NodeSDK({
     // optional - collection of custom headers to be sent with each request, empty by default
     headers: {},
   }),
-  instrumentations: [getNodeAutoInstrumentations()],
+  instrumentations: [getNodeAutoInstrumentations(),
+    new HttpInstrumentation(),
+    new ExpressInstrumentation(),
+  ],
 });
 sdk.start();
