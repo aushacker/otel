@@ -6,7 +6,11 @@ const PORT = process.env.PORT || "8080";
 const app = express();
 
 app.get("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Hello World\n");
+});
+
+app.get("/version", (req, res) => {
+  res.send("1.0\n");
 });
 
 app.listen(parseInt(PORT, 10), () => {
