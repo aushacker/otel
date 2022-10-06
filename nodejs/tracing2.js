@@ -3,12 +3,10 @@ const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumenta
 const { HttpInstrumentation } = require("@opentelemetry/instrumentation-http");
 const { ExpressInstrumentation } = require("@opentelemetry/instrumentation-express");
 
-//const opentelemetry = require("@opentelemetry/api");
 const { Resource } = require("@opentelemetry/resources");
 const { SemanticResourceAttributes } = require("@opentelemetry/semantic-conventions");
 
 const { NodeTracerProvider } = require("@opentelemetry/sdk-trace-node");
-//const { ConsoleSpanExporter, BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 const { OTLPTraceExporter } = require("@opentelemetry/exporter-trace-otlp-http");
 const { BatchSpanProcessor } = require("@opentelemetry/sdk-trace-base");
 
@@ -25,8 +23,8 @@ registerInstrumentations({
 const resource =
   Resource.default().merge(
     new Resource({
-      [SemanticResourceAttributes.SERVICE_NAME]: "otel-nodejs",
-      [SemanticResourceAttributes.SERVICE_VERSION]: "0.1.0",
+      [SemanticResourceAttributes.SERVICE_NAME]: process.env.SERVICE_NAME || "otel-nodejs",
+      [SemanticResourceAttributes.SERVICE_VERSION]: process.env.SERVICE_VERSION || "undefined",
     })
   );
 
