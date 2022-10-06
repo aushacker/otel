@@ -17,6 +17,6 @@ spec:
           image: nodejs
           env:
             - name: OTLP_URL
-              value: 'http://jaeger.aaa-jaeger.svc.cluster.local'
+              value: 'http://jaeger.aaa-jaeger.svc.cluster.local:4318/v1/traces'
           ports:
             - containerPort: 8080
