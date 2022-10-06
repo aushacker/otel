@@ -48,7 +48,7 @@ const provider = new NodeTracerProvider({
     resource: resource,
 });
 //const exporter = new ConsoleSpanExporter();
-const exporter: new OTLPTraceExporter({
+const exporter = new OTLPTraceExporter({
     // optional - url default value is http://localhost:4318/v1/traces
     url: process.env.OTLP_URL || "htttp://localhost:4318/v1/traces",
     // optional - collection of custom headers to be sent with each request, empty by default
