@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: collector
+spec:
+  selector:
+    matchLabels:
+      app: collector
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: collector
+    spec:
+      containers:
+      - name: collector
+        image: collector
+#        command:
+#        - --config=/config/collector-gateway.yaml
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 13133
+          initialDelaySeconds: 30
+          periodSeconds: 30
+        volumeMounts:
+        - name: config
+          mountPath: /etc/otelcol
+#          readOnly: true
+        ports:
+        - containerPort: 4317
+        - containerPort: 4318
+      volumes:
+      - name: config
+        configMap:
+          name: collector-config
