@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: database-config
+data:
+  DB_TYPE: mariadb
+  DB_HOST: nw-db.northwind.svc.cluster.local
+  DB_PORT: 3306
+  DB_NAME: northwind
+  DB_USER: test1
+  DB_PASSWORD: mypa55

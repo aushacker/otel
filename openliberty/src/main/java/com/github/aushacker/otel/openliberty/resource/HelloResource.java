@@ -9,7 +9,7 @@ import jakarta.ws.rs.core.MediaType;
 public class HelloResource {
 
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public String hello() {
         return "Hello world\n";
     }
