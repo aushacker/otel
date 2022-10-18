@@ -17,7 +17,7 @@ spec:
           image: otel-ol
           env:
             - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: 'http://jaeger.aaa-jaeger.svc.cluster.local:4318/v1/traces'
+              value: http://jaeger.aaa-jaeger.svc.cluster.local:4318
             - name: OTEL_SERVICE_NAME
               value: otel-ol
             - name: OTEL_SERVICE_VERSION
