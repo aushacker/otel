@@ -17,7 +17,7 @@ spec:
           image: nodejs
           env:
             - name: OTLP_URL
-              value: 'http://collector.aaa-otel-collector.svc.cluster.local:4318/v1/traces'
+              value: 'http://jaeger.aaa-jaeger.svc.cluster.local:4318/v1/traces'
             - name: SERVICE_NAME
               value: otel-nodejs
             - name: SERVICE_VERSION

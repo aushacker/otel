@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: openliberty
+spec:
+  selector:
+    matchLabels:
+      app: openliberty
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: openliberty
+    spec:
+      containers:
+        - name: openliberty
+          image: otel-ol
+          env:
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: 'http://jaeger.aaa-jaeger.svc.cluster.local:4318/v1/traces'
+            - name: OTEL_SERVICE_NAME
+              value: otel-ol
+            - name: OTEL_SERVICE_VERSION
+              value: '1.0.0'
+          ports:
+            - containerPort: 9080
