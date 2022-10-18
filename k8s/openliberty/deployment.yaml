@@ -22,5 +22,8 @@ spec:
               value: otel-ol
             - name: OTEL_SERVICE_VERSION
               value: '1.0.0'
+          envFrom:
+            - configMapRef:
+                name: database-config
           ports:
             - containerPort: 9080
