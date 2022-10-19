@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring
+spec:
+  selector:
+    matchLabels:
+      app: spring
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: spring
+    spec:
+      containers:
+        - name: spring
+          image: otel-spring
+          env:
+            - name: OTEL_EXPORTER_OTLP_ENDPOINT
+              value: http://jaeger.aaa-jaeger.svc.cluster.local:4317
+            - name: OTEL_SERVICE_NAME
+              value: otel-spring
+            - name: OTEL_SERVICE_VERSION
+              value: '1.0.0'
+          envFrom:
+            - configMapRef:
+                name: database-config
+          ports:
+            - containerPort: 8080
