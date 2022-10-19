@@ -1,7 +1,5 @@
 FROM icr.io/appcafe/open-liberty:full-java11-openj9-ubi
 
-USER root
-
 ARG VERSION=1.0
 ARG REVISION=SNAPSHOT
 
@@ -25,7 +23,5 @@ COPY --chown=1001:0 target/*.war /config/apps/
 ENV JVM_ARGS -javaagent:/opt/otel/opentelemetry-javaagent.jar
 RUN mkdir -p /opt/otel
 COPY --chown=1001:0 opentelemetry-javaagent-1.19.0.jar /opt/otel/opentelemetry-javaagent.jar
-
-USER 1001
 
 RUN configure.sh
