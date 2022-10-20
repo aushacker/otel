@@ -20,8 +20,8 @@ spec:
               value: http://jaeger.aaa-jaeger.svc.cluster.local:4317
             - name: OTEL_SERVICE_NAME
               value: otel-ol
-            - name: OTEL_SERVICE_VERSION
-              value: '1.0.0'
+            - name: OTEL_RESOURCE_ATTRIBUTES
+              value: service.version=1.0-SNAPSHOT
           envFrom:
             - configMapRef:
                 name: database-config
