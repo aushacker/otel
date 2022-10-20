@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.SQLException;
 
+//import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
@@ -48,9 +49,16 @@ public class DbTestResource {
             s.execute("SELECT NOW()");
         }
         catch (SQLException ex) {
-            return "Failed\n";
+            return "Failed";
         }
 
-        return "Connected OK\n";
+        return "Connected OK";
+    }
+
+    @GET
+    @Path("/data")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String dummyData() {
+        return "{ \"result\": \"" + testConnect() + "\" }";
     }
 }
