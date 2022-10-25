@@ -12,6 +12,6 @@ spec:
     - name: otlp-http
       port: 4318
       targetPort: otlp-http
-    - name: prom-scrape
+    - name: metrics
       port: 8888
-      targetPort: prom-scrape
+      targetPort: metrics

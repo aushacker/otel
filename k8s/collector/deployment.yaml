@@ -32,7 +32,7 @@ spec:
         - name: otlp-http
           protocol: TCP
           containerPort: 4318
-        - name: prom-scrape
+        - name: metrics
           protocol: TCP
           containerPort: 8888
       volumes:
