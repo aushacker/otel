@@ -11,8 +11,9 @@ resources:
 - configMap.yaml
 - deployment.yaml
 - service.yaml
+- service-monitor.yaml
 
 images:
 - name: collector
-  newName: otel/opentelemetry-collector
+  newName: otel/opentelemetry-collector-contrib
   newTag: 'latest'

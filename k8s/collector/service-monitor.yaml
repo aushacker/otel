@@ -1,0 +1,14 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  labels:
+    app: collector-monitor
+  name: collector-monitor
+spec:
+  endpoints:
+  - interval: 30s
+    port: prom-scrape
+    scheme: http
+  selector:
+    matchLabels:
+      app: collector

@@ -15,8 +15,6 @@ spec:
       containers:
       - name: collector
         image: collector
-#        command:
-#        - --config=/config/collector-gateway.yaml
         livenessProbe:
           httpGet:
             path: /
@@ -26,10 +24,17 @@ spec:
         volumeMounts:
         - name: config
           mountPath: /etc/otelcol
-#          readOnly: true
+          readOnly: true
         ports:
-        - containerPort: 4317
-        - containerPort: 4318
+        - name: otlp-grpc
+          protocol: TCP
+          containerPort: 4317
+        - name: otlp-http
+          protocol: TCP
+          containerPort: 4318
+        - name: prom-scrape
+          protocol: TCP
+          containerPort: 8888
       volumes:
       - name: config
         configMap:
