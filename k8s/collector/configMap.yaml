@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: collector-config
 data:
-  config.yaml: |
+  collector.yaml: |
     receivers:
       otlp:
         protocols:
@@ -26,6 +26,8 @@ data:
     exporters:
       jaeger:
         endpoint: jaeger.aaa-jaeger.svc.cluster.local:14250
+        tls:
+          insecure: true
       logging:
         loglevel: info
     extensions:
@@ -39,6 +41,7 @@ data:
             - otlp
           processors:
             - memory_limiter
+            - resource
             - batch
           exporters:
             - jaeger

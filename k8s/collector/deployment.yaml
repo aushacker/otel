@@ -15,6 +15,9 @@ spec:
       containers:
       - name: collector
         image: collector
+        command:
+        - /go/bin/otelcol-linux
+        - --config=/conf/collector.yaml
         livenessProbe:
           httpGet:
             path: /
@@ -23,7 +26,7 @@ spec:
           periodSeconds: 30
         volumeMounts:
         - name: config
-          mountPath: /etc/otelcol-contrib
+          mountPath: /conf
           readOnly: true
         ports:
         - name: otlp-grpc
