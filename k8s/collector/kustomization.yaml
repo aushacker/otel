@@ -15,6 +15,7 @@ resources:
 
 images:
 - name: collector
-  newName: registry.redhat.io/rhosdt/opentelemetry-collector-rhel8@sha256:526b5140e13e6adbb5e9f4a1333c4017bbd9595001f2d39c4e1452e1e1f9e7ca
+  newName: registry.redhat.io/rhosdt/opentelemetry-collector-rhel8
+  newTag: '0.60.0'
 #  newName: otel/opentelemetry-collector-contrib
 #  newTag: 'latest'
