@@ -23,7 +23,7 @@ spec:
           periodSeconds: 30
         volumeMounts:
         - name: config
-          mountPath: /etc/otelcol
+          mountPath: /etc/otelcol-contrib
           readOnly: true
         ports:
         - name: otlp-grpc
