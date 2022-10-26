@@ -16,8 +16,6 @@ spec:
         - name: openliberty
           image: otel-ol
           env:
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://jaeger.aaa-jaeger.svc.cluster.local:4317
             - name: OTEL_SERVICE_NAME
               value: otel-ol
             - name: OTEL_RESOURCE_ATTRIBUTES
@@ -25,5 +23,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: database-config
+            - configMapRef:
+                name: opentelemetry
           ports:
-            - containerPort: 9080
+            - name: web
+              protocol: TCP
+              containerPort: 9080

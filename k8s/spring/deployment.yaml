@@ -16,8 +16,6 @@ spec:
         - name: spring
           image: otel-spring
           env:
-            - name: OTEL_EXPORTER_OTLP_ENDPOINT
-              value: http://jaeger.aaa-jaeger.svc.cluster.local:4317
             - name: OTEL_SERVICE_NAME
               value: otel-spring
             - name: OTEL_RESOURCE_ATTRIBUTES
@@ -25,5 +23,9 @@ spec:
           envFrom:
             - configMapRef:
                 name: database-config
+            - configMapRef:
+                name: opentelemetry
           ports:
-            - containerPort: 8080
+            - name: web
+              protocol: TCP
+              containerPort: 8080

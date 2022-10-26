@@ -12,6 +12,10 @@ data:
           grpc:
             endpoint: 0.0.0.0:4317
     processors:
+      memory_limiter:
+        check_interval: 1s
+        limit_percentage: 50
+        spike_limit_percentage: 30
       batch:
         timeout: 5s
       resource:
@@ -22,8 +26,8 @@ data:
     exporters:
       logging:
         loglevel: info
-      jaeger:
-        endpoint: jaeger.aaa-jeager.svc.cluster.local:14250
+      otlp:
+        endpoint: jaeger.aaa-jeager.svc.cluster.local:4317
     extensions:
       health_check:
     service:
@@ -32,5 +36,7 @@ data:
       pipelines:
         traces:
           receivers: [otlp]
-          processors: [batch, resource]
-          exporters: [logging, jaeger]
+          processors: [memory_limiter, batch]
+    #          processors: [memory_limiter, batch, resource]
+    #          exporters: [logging, otlp]
+          exporters: [otlp]
