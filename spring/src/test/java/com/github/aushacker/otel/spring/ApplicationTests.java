@@ -8,6 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.github.aushacker.otel.spring.controller.HelloController;
 
+/**
+ * Test context creation.
+ */
 @SpringBootTest
 class ApplicationTests {
 
