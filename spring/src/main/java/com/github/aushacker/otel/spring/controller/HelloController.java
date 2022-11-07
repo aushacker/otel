@@ -1,4 +1,4 @@
-package com.github.aushacker.otel.spring;
+package com.github.aushacker.otel.spring.controller;
 
 import com.github.aushacker.otel.spring.model.DummyData;
 import org.slf4j.Logger;
