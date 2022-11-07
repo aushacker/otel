@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class HelloController {
 
-	private static final Logger log = LoggerFactory.getLogger(HelloController.class);
+    private static final Logger log = LoggerFactory.getLogger(HelloController.class);
 
     @GetMapping("/hello")
     public String hello() {
@@ -23,7 +23,7 @@ public class HelloController {
     public DummyData data() throws Exception {
         RestTemplate template = new RestTemplateBuilder().build();
         DummyData data = template.getForObject("http://openliberty.aaa-otel-apps.svc.cluster.local:9080/dbtest/data", DummyData.class);
-		log.info(data.toString());
+        log.info(data.toString());
         return data;
     }
 }

@@ -9,12 +9,13 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 @ApplicationScoped
 public class ReadinessCheck implements HealthCheck {
 
-  private static final String READINESS_CHECK = "Basic readiness check";
-  @Override
-  public HealthCheckResponse call() {
-    if (System.getProperty("wlp.server.name").equals("defaultServer")) {
-      return HealthCheckResponse.up(READINESS_CHECK);
+    private static final String READINESS_CHECK = "Basic readiness check";
+
+    @Override
+    public HealthCheckResponse call() {
+        if (System.getProperty("wlp.server.name").equals("defaultServer")) {
+            return HealthCheckResponse.up(READINESS_CHECK);
+        }
+        return HealthCheckResponse.down(READINESS_CHECK);
     }
-    return HealthCheckResponse.down(READINESS_CHECK);
-  }
 }

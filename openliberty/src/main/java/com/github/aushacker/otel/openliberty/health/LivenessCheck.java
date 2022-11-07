@@ -12,12 +12,12 @@ import org.eclipse.microprofile.health.HealthCheckResponse;
 @ApplicationScoped
 public class LivenessCheck implements HealthCheck {
 
-  @Override
-  public HealthCheckResponse call() {
-    MemoryMXBean memBean = ManagementFactory.getMemoryMXBean();
-    long memUsed = memBean.getHeapMemoryUsage().getUsed();
-    long memMax = memBean.getHeapMemoryUsage().getMax();
+    @Override
+    public HealthCheckResponse call() {
+        MemoryMXBean memBean = ManagementFactory.getMemoryMXBean();
+        long memUsed = memBean.getHeapMemoryUsage().getUsed();
+        long memMax = memBean.getHeapMemoryUsage().getMax();
 
-    return HealthCheckResponse.named("Basic memory check").status(memUsed < memMax * 0.9).build();
-  }
+        return HealthCheckResponse.named("Basic memory check").status(memUsed < memMax * 0.9).build();
+    }
 }

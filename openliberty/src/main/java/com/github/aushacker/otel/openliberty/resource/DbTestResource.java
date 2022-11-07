@@ -46,7 +46,7 @@ public class DbTestResource {
         String connectString = "jdbc:" + dbType + "://" + dbHost + ":" + dbPort + "/" + dbName + "?user=" + dbUser + "&password=" + dbPassword;
         try (Connection connection = DriverManager.getConnection(connectString);
              Statement s = connection.createStatement()) {
-            s.execute("SELECT NOW()");
+             s.execute("SELECT NOW()");
         }
         catch (SQLException ex) {
             return "Failed";
