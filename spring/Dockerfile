@@ -20,7 +20,8 @@ LABEL \
 
 RUN mkdir -p /opt/app
 
-COPY target/spring-1.0.0-SNAPSHOT.jar opentelemetry-javaagent-1.19.0.jar /opt/app/
+#COPY target/spring-1.0.0-SNAPSHOT.jar opentelemetry-javaagent-1.19.0.jar /opt/app/
+COPY target/spring-1.0.0-SNAPSHOT.jar /opt/app/
 
 RUN chown -R 1001:0 /opt && \
     chmod -R g=u /opt
@@ -29,4 +30,5 @@ EXPOSE 8080
 
 USER 1001
 
-CMD ["java", "-javaagent:/opt/app/opentelemetry-javaagent-1.19.0.jar", "-jar", "/opt/app/spring-1.0.0-SNAPSHOT.jar"]
+#CMD ["java", "-javaagent:/opt/app/opentelemetry-javaagent-1.19.0.jar", "-jar", "/opt/app/spring-1.0.0-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/opt/app/spring-1.0.0-SNAPSHOT.jar"]
